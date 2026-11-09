@@ -1,0 +1,77 @@
+.hero {
+  padding: 60px 0;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #6c757d;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.hero-input {
+  display: flex;
+  width: 100%;
+  max-width: 650px;
+  gap: 12px;
+}
+
+.hero-input .form-control {
+  display: block;
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+}
+
+.analyze-btn {
+  flex-shrink: 0;
+  margin-left: 0 !important;
+  padding: 12px 20px !important;
+  border-radius: 5px !important;
+}
+
+.github-btn {
+  width: 200px;
+  display: block;
+  margin: 8px auto 0;
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding: 40px 12px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  /* Yahan flex-direction column aur nowrap hata kar wrap ensure karein */
+  .hero-input {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .hero-input .form-control {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .hero-input .analyze-btn {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+}
