@@ -8,24 +8,17 @@ async function downloadRepo(owner, repoName) {
 
   // Identify GitHub ZIP download errors using HTTP status codes
   if (!response.ok) {
-    let message = "Unable to download repository";
+  const errorDetails = await response.text();
 
-    if (response.status === 404) {
-      message = "Repository not found or inaccessible.";
-    } else if (response.status === 403) {
-      message = "GitHub API rate limit exceeded or access denied.";
-    } else if (response.status === 401) {
-      message = "Authentication required to access this repository.";
-    } else if (response.status === 429) {
-      message = "Too many requests. Please try again later.";
-    }
+  console.error("GitHub Status:", response.status);
+  console.error("GitHub Headers:", Object.fromEntries(response.headers));
+  console.error("GitHub Error Details:", errorDetails);
 
-    // Attach HTTP status so server.js can return the correct status code
-    const error = new Error(message);
-    error.status = response.status;
+  const error = new Error("Unable to download repository");
+  error.status = response.status;
 
-    throw error;
-  }
+  throw error;
+}
 
   const zipBuffer = Buffer.from(await response.arrayBuffer());
 
